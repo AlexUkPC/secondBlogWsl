@@ -1,6 +1,11 @@
 <section class="section">
     <div class="container">
         <%= simple_form_for @post do |f| %>
+            <% if @post.errors.any? %>
+                <% @post.errors.full_messages.each do |msg| %>
+                    <div class="notification is-danger"><%= msg %></div>#modificat fara de Traversy Media cu clasa de bulma
+                <% end %>
+            <% end %>
             <div class="field">
             <div class="control">
                 <%= f.input :title, input_html: {class: 'input'},wrapper:false,label_html: {class:'label'} %>
