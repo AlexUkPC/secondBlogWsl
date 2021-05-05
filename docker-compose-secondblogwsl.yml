@@ -11,6 +11,8 @@ services:
       - VIRTUAL_HOST=secondblogwsl.alexrogna.com
       - VIRTUAL_PORT=3000
       - LETSENCRYPT_HOST=secondblogwsl.alexrogna.com
+    networks:
+      - proxy
     restart: always
 
   database_secondblogwsl:
@@ -19,6 +21,8 @@ services:
       - .env/production/database_secondblogwsl
     volumes:
       - db_data_secondblogwsl:/var/lib/postgresql/data
+    networks:
+      - proxy
     restart: always
     
   db-migrator_secondblogwsl:
@@ -27,5 +31,9 @@ services:
     env_file:
       - .env/production/database_secondblogwsl
       - .env/production/web_secondblogwsl
+    networks:
+      - proxy
 volumes:
   db_data_secondblogwsl:
+networks:
+  proxy:

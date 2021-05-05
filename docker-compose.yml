@@ -16,6 +16,8 @@ services:
       - .env/development/web_secondblogwsl
     environment: 
       - WEBPACKER_DEV_SERVER_HOST=webpack_dev_server_secondblogwsl
+    networks:
+      - network
   webpack_dev_server_secondblogwsl:
     build:
       context: .
@@ -33,12 +35,18 @@ services:
       - .env/development/web_secondblogwsl
     environment: 
       - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+    networks:
+      - network
   database_secondblogwsl:
     image: postgres
     env_file: 
       - .env/development/database_secondblogwsl
     volumes: 
       - db_data_secondblogwsl:/var/lib/postgresql/data
+    networks:
+      - network
 volumes: 
   db_data_secondblogwsl:
   gem_cache_secondblogwsl:
+networks:
+  network:
