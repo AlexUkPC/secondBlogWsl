@@ -26,7 +26,7 @@ services:
         GROUP_ID: "${GROUP_ID:-1000}"
     command: ./bin/webpack-dev-server
     ports: 
-      - "3038:3038"
+      - "4003:4003"
     volumes: 
       - ./secondblogwsl:/opt/app
       - gem_cache_secondblogwsl:/gems
